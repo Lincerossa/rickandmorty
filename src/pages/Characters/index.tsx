@@ -6,7 +6,7 @@ import { TCardWithSlug } from '../../components/ListOfCards/types'
 import transformData from './utility/transformData'
 
 export default () => {
-  const [page, setPage ] = useState<number>(1)
+  const [page] = useState<number>(1)
   const [items, setItems] = useState<[] | TCardWithSlug[]>([])
 
   useEffect(() => {
