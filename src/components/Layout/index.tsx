@@ -1,11 +1,30 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Wrapper from '../Wrapper'
+import Padder from '../Padder'
 import * as S from './styles'
 
-export default ({ children }: {children: JSX.Element}) => (
+type TLayout = {
+  children: JSX.Element
+}
+
+export default ({ children }: TLayout) => (
   <div>
-    <S.Header>Header here</S.Header>
+    <S.Header>
+      <Wrapper size="large">
+        <Padder size="regular">
+          <Link to="/">RAM</Link>
+        </Padder>
+      </Wrapper>
+    </S.Header>
     {children}
-    <S.Footer>Footer here</S.Footer>
+    <S.Footer>
+      <Wrapper size="large">
+        <Padder size="regular">
+          <Link to="/">RAM</Link>
+        </Padder>
+      </Wrapper>
+    </S.Footer>
   </div>
 )
 
