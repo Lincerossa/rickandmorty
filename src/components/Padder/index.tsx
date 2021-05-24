@@ -1,12 +1,9 @@
 import React from 'react'
 import * as S from './styles'
+import { TPadderProps } from './types'
 
-type TPadder = {
-  size: 'small' | 'regular' | 'large',
-  children: JSX.Element
-}
 
-const Padder = ({ size, children } : TPadder) => (
+const Padder = ({ size, children } : TPadderProps) => (
   <S.Padder size={size}>{children}</S.Padder>
 )
 

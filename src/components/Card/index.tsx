@@ -1,22 +1,9 @@
 import React from 'react'
 import Image from '../Image'
 import * as S from './styles'
+import { TCardProps } from './types'
 
-export type TCard = {
-  image: {
-    src: string,
-    description: string,
-  },
-  hasShadow?: boolean
-  dotColor?: string,
-  supertitle: string,
-  title: string,
-  tags: string[],
-  subtitles: string[],
-  layout: string,
-}
-
-const Card = ({ image, dotColor, supertitle, title, tags, subtitles, layout = 'auto' } : TCard) => (
+const Card = ({ image, dotColor, supertitle, title, tags, subtitles, layout = 'auto' } : TCardProps) => (
   <S.Card>
     <S.ImageWrapper layout={layout}>
       <Image image={image} hasShadow />

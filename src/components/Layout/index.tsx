@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper'
 import Padder from '../Padder'
 import * as S from './styles'
+import { TLayoutProps } from './types'
 
-type TLayout = {
-  children: JSX.Element
-}
 
-export default ({ children }: TLayout) => (
+export default ({ children }: TLayoutProps) => (
   <div>
     <S.Header>
       <Wrapper size="large">

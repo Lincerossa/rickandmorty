@@ -1,12 +1,8 @@
 import React from 'react'
 import * as S from './styles'
+import { TListProps } from './types'
 
-type TList = {
-  columns: number,
-  children: JSX.Element[]
-}
-
-const List = ({ columns = 1, children }: TList) => (
+const List = ({ columns = 1, children }: TListProps) => (
   <S.List columns={columns}>
     {React.Children.map(children, (child) => <S.ListItem>{child}</S.ListItem>)}
   </S.List>

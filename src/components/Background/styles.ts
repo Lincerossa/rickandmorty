@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Background = styled.div<{background: string, color?: string}>`
+import { TBackgroundStyle } from './types'
+
+export const Background = styled.div<TBackgroundStyle>`
   background-color: ${(props) => props.background};
   color: ${(props) => props.color};
   * {

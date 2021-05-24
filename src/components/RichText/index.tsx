@@ -1,12 +1,9 @@
 import React from 'react'
 import * as S from './styles'
+import { TRichTextProps } from './types'
 
-type TRichText = {
-  children?: JSX.Element,
-  text?: string
-}
 
-const RichText = ({ text, children } : TRichText) => {
+const RichText = ({ text, children } : TRichTextProps) => {
   if (text) {
     return (
       <S.RichText

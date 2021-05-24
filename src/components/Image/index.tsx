@@ -1,16 +1,10 @@
 
 import React from 'react'
 import * as S from './styles'
+import { TImageProps } from './types'
 
-type TImage = {
-  image: {
-    src: string,
-    description?: string
-  }
-  hasShadow?: boolean
-}
 
-const MyImage = ({ image, hasShadow } : TImage) => (
+const MyImage = ({ image, hasShadow } : TImageProps) => (
   <S.ImageWrapper>
     <img src={image.src} alt="" />
     {hasShadow && <S.Shadow />}
