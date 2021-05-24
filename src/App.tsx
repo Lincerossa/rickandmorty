@@ -3,13 +3,14 @@ import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyle from './styles/global'
 
+import Routes from './Routes'
 
 const App = () => {
   return (
     <div>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <div>Hello</div>
+        <Routes />
       </ThemeProvider>
     </div>
   )
