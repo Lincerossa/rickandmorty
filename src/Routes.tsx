@@ -1,19 +1,21 @@
 
 import { HashRouter, Route, Switch } from 'react-router-dom'
+import {Layout} from './components'
+import {Characters, Character, NotFound, Home} from './pages/'
 
-import Home from './pages/Home'
-import Characters from './pages/Characters'
-import Character from './pages/Character'
-import NotFound from './pages/NotFound'
-
-
+const CustomRoute = (props:any) => {
+  const { Component } = props
+  return (
+    <Route {...props} render={(props) => <Layout {...props}><Component {...props} /></Layout>} />
+  )
+}
 const Routes = () => (
   <HashRouter>
     <Switch>
-      <Route exact path="/characters/:id" render={Character} />
-      <Route exact path="/characters" render={Characters} />
-      <Route exact path="/" render={Home} />
-      <Route render={NotFound} />
+      <CustomRoute exact path="/characters/:id" Component={Character} />
+      <CustomRoute exact path="/characters" Component={Characters} />
+      <CustomRoute exact path="/" Component={Home} />
+      <CustomRoute Component={NotFound} />
     </Switch>
   </HashRouter>
 )
