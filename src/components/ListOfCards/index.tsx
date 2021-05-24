@@ -15,7 +15,7 @@ type TListOfCards = {
 const ListOfCards = ({ items }: TListOfCards) => (
   <List columns={3}>
     {items.map((item) => (
-      <Link to={item.slug}>
+      <Link key={item.slug} to={item.slug}>
         <S.ListItem>
           <Card {...item} layout="auto" />
         </S.ListItem>

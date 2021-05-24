@@ -33,7 +33,7 @@ const Card = ({ image, dotColor, supertitle, title, tags, subtitles, layout = 'a
               }
             </S.TagsWrapper>
           )}
-      {subtitles?.length > 0 && subtitles.map(subtitle =><S.Subtitle>{subtitle}</S.Subtitle>)}
+      {subtitles?.length > 0 && subtitles.map(subtitle =><S.Subtitle key={subtitle}>{subtitle}</S.Subtitle>)}
     </S.Description>
   </S.Card>
 )
