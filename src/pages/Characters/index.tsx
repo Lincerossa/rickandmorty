@@ -1,23 +1,23 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { ListOfCards, Background, Wrapper, Padder, Pagination, Layout } from '../../components'
-import theme from '../../styles/theme'
+import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../../components'
+
 import { TCardWithSlug } from '../../components/ListOfCards/types'
-import transformData from './utility/transformData'
+import produceListItems from './utility/produceListItems'
 import deelay from './utility/deelay'
 
 export default () => {
   const [page, setPage] = useState<number>(1)
   const [data, setData]= useState<any>(null)
   const [isLoading, setLoading] = useState<boolean>(false)
-  const [items, setItems] = useState<[] | TCardWithSlug[]>([])
+  const items : [] | TCardWithSlug[] = data ? produceListItems(data.results) : []
 
   useEffect(() => {
     async function fetchData(){
       setLoading(true)
       const result = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
         .then(result => result.data)
-        .catch(e => console.log(e))
+        .catch(e => setData(null))
 
       await deelay(200) // this is just for a better ui effect
       if(result) setData(result)
@@ -26,33 +26,34 @@ export default () => {
     fetchData()
   }, [page])
 
-  useEffect(() => {
-    if(data) setItems(transformData(data.results))
-  }, [data])
-
   function onPageChange({selected} : {selected: number}) {
     setPage(selected + 1)
   }
 
-  return (<Layout isLoading={isLoading}>
-    {items?.length > 0 && (
-      <Background color="" background={theme.colors.secondary}>
+  return (
+    <Layout isLoading={isLoading}>
+      {!isLoading && items?.length === 0 && <div>NO DATA</div>}
+      {items?.length > 0 && (
         <Wrapper size="large">
           <Padder size="large">
             <ListOfCards items={items} />
           </Padder>
-          {data?.info?.pages && <Pagination
-            previousLabel="Prev"
-            nextLabel="Next"
-            initialPage={page - 1}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={3}
-            onPageChange={onPageChange}
-            pageCount={data.info.pages}
-            align="right"
-          />}
         </Wrapper>
-      </Background>
-    )}
-  </Layout>)
+      )}
+
+      {data?.info?.pages && 
+          <Wrapper size="large">
+            <Padder size="small"><Pagination
+              previousLabel="Prev"
+              nextLabel="Next"
+              initialPage={page - 1}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={onPageChange}
+              pageCount={data.info.pages}
+              align="right"
+            /></Padder>
+          </Wrapper>}
+          
+    </Layout>)
 }
