@@ -1,4 +1,3 @@
-
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import Character from './pages/Character'
 import Characters from './pages/Characters'

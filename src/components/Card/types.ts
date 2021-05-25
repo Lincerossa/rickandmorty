@@ -1,6 +1,7 @@
 export type TCardProps = {
   image: {
     src: string,
+    alt: string,
     description?: string,
   },
   hasShadow?: boolean
