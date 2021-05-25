@@ -17,7 +17,7 @@ export default () => {
       setLoading(true)
       const result = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
         .then(result => result.data)
-        .catch(e => setData(null))
+        .catch(() => setData(null))
 
       await deelay(200) // this is just for a better ui effect
       if(result) setData(result)
@@ -27,19 +27,18 @@ export default () => {
   }, [page])
 
   function onPageChange({selected} : {selected: number}) {
+    if( typeof window !== 'undefined') window.scrollTo({top: 0, behavior: 'smooth'})
     setPage(selected + 1)
   }
 
   return (
     <Layout isLoading={isLoading}>
       {!isLoading && items?.length === 0 && <div>NO DATA</div>}
-      {items?.length > 0 && (
-        <Wrapper size="large">
-          <Padder size="large">
-            <ListOfCards items={items} />
-          </Padder>
-        </Wrapper>
-      )}
+      <Wrapper size="large">
+        <Padder size="large">
+          <ListOfCards items={items} isLoading={isLoading} />
+        </Padder>
+      </Wrapper>
 
       {data?.info?.pages && 
           <Wrapper size="large">

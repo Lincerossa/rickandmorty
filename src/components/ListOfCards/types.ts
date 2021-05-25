@@ -5,5 +5,6 @@ export interface TCardWithSlug extends TCardProps {
 }
 
 export type TListOfCardsProps = {
-  items: TCardWithSlug[]
+  items: TCardWithSlug[],
+  isLoading: boolean
 }

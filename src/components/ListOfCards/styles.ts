@@ -8,3 +8,36 @@ export const ListItem = styled.div`
     }
   }
 `
+
+export const SkeletonCard = styled.div`
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  background-color: #DDDBDD;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(101, 101,101, 0) 0,
+      rgba(101, 101,101, 0.2) 20%,
+      rgba(101, 101,101,  0.3) 60%,
+      rgba(101, 101,101, 0)
+    );
+    animation: shimmer 2s infinite;
+    content: '';
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+`
