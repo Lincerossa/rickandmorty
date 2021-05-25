@@ -1,7 +1,9 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { Wrapper, Padder, Card, Layout } from '../components'
+import { Wrapper, Padder, Card, Layout, RichText } from '../components'
 import produceCardProps from '../utility/produceCardProps'
+import { Background } from '../components/Background/styles'
+import theme from '../styles/theme'
 
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
@@ -21,11 +23,35 @@ export default ({match: {params: {id}}}: any) => {
     }
     fetchData()
   }, [id])
-  console.log(data)
+  
+  const listOfText = [
+    '<h1>Bio</h1>',
+    '<h1>Origin</h1>',
+    '<h1>Location</h1>',
+    '<h1>Chapters</h1>'
+  ]
 
   return (
     <Layout isLoading={isLoading}>
-      {data && <Wrapper size="large"><Padder size="large"><Card {...cardProps} /></Padder></Wrapper>}
+      {data && (
+        <>
+          <Wrapper size="big">
+            <Padder size="large">
+              <Card {...cardProps} />
+            </Padder>
+          </Wrapper>
+          {listOfText.map((text, i) => (
+            <Background background={theme.colors[i%2 ? 'secondary' : 'primary']} color="white">
+              <Wrapper size="large">
+                <Padder size="large">
+                  <RichText text={text} />
+                </Padder>
+              </Wrapper>
+            </Background>
+          ))}
+          
+        </>
+      )}
     </Layout>
   )
 }

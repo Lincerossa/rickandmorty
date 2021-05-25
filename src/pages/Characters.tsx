@@ -53,6 +53,6 @@ export default () => {
               align="right"
             /></Padder>
           </Wrapper>}
-          
-    </Layout>)
+    </Layout>
+  )
 }
