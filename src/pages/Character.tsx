@@ -41,7 +41,7 @@ export default ({match: {params: {id}}}: any) => {
             </Padder>
           </Wrapper>
           {listOfText.map((text, i) => (
-            <Background background={theme.colors[i%2 ? 'secondary' : 'primary']} color="white">
+            <Background key={text} background={theme.colors[i%2 ? 'secondary' : 'primary']} color="white">
               <Wrapper size="large">
                 <Padder size="large">
                   <RichText text={text} />

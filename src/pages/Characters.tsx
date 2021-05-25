@@ -28,7 +28,7 @@ export default () => {
   }, [page])
 
   function onPageChange({selected} : {selected: number}) {
-    if( typeof window !== 'undefined') window.scrollTo({top: 0, behavior: 'smooth'})
+    if( typeof window !== 'undefined') window.scrollTo({top: 0})
     setPage(selected + 1)
   }
 
