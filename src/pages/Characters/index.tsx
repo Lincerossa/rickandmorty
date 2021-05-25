@@ -4,6 +4,7 @@ import { ListOfCards, Background, Wrapper, Padder, Pagination, Layout } from '..
 import theme from '../../styles/theme'
 import { TCardWithSlug } from '../../components/ListOfCards/types'
 import transformData from './utility/transformData'
+import deelay from './utility/deelay'
 
 export default () => {
   const [page, setPage] = useState<number>(1)
@@ -18,6 +19,7 @@ export default () => {
         .then(result => result.data)
         .catch(e => console.log(e))
 
+      await deelay(200) // this is just for a better ui effect
       if(result) setData(result)
       setLoading(false)
     }

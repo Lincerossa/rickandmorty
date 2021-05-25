@@ -11,16 +11,13 @@ export const Footer = styled.div`
   background-color: ${(props: any) => props.theme.colors.secondary};
 `
 
-export const Loading = styled.div<{isLoading: boolean}>`
+export const Loading = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: ${props => props.theme.colors.secondary};
-  opacity: ${props => props.isLoading ? .5 : 0};
   z-index: 1;
-  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;

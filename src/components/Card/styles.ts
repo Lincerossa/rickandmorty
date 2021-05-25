@@ -20,7 +20,7 @@ export const ImageWrapper = styled.div<{layout: string}>`
   :before{
     content: "";
     position: absolute;
-    background: linear-gradient(to top,rgba(0,0,0,.75),transparent);
+    background: linear-gradient(to top,rgba(0,0,0,.5),transparent);
     bottom: 0;
     right: 0;
     left: 0;

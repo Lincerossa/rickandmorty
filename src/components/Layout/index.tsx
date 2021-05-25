@@ -23,9 +23,9 @@ export default ({ children, isLoading }: TLayoutProps) => (
         </Padder>
       </Wrapper>
     </S.Footer>
-    <S.Loading isLoading={isLoading}>
+    {isLoading && <S.Loading >
       <S.Pulse><div></div><div></div></S.Pulse>
-    </S.Loading>
+    </S.Loading>}
   </S.Layout>
 )
 
