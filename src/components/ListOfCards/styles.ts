@@ -12,6 +12,8 @@ export const ListItem = styled.div`
 export const InputWrapper = styled.div`
   display: none;
 
+
+
   @media (min-width: 978px){
     display: flex;
     justify-content: flex-end;
@@ -22,6 +24,34 @@ export const InputWrapper = styled.div`
 `
 export const Input = styled.input`
   cursor: pointer;
+  -webkit-appearance: none;
+  width: 300px;
+  background: ${props => props.theme.colors.primary};
+  height: .5rem;
+  border-radius: 4px;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: ${props => props.theme.colors.light};
+    height: .75rem;
+    width: .75rem;
+    border-radius: 4px;
+    transition: .2s all;
+    &:hover{
+      background-color: ${props => props.theme.colors.thirdary};
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
 `
 
 export const SkeletonCard = styled.div`
