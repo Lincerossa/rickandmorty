@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper'
 import Padder from '../Padder'
 import * as S from './styles'
+import Logo from './LogoSvg'
 import { TLayoutProps } from './types'
 
 
@@ -10,16 +11,16 @@ export default ({ children, isLoading }: TLayoutProps) => (
   <S.Layout>
     <S.Header>
       <Wrapper size="large">
-        <Padder size="regular">
-          <Link to="/">RAM</Link>
-        </Padder>
+        <Link to="/"><Logo /></Link>
       </Wrapper>
     </S.Header>
-    {children}
+    <S.Content>
+      {children}
+    </S.Content>
     <S.Footer>
       <Wrapper size="large">
         <Padder size="regular">
-          <Link to="/">RAM</Link>
+          <Link to="/"><Logo /></Link>
         </Padder>
       </Wrapper>
     </S.Footer>

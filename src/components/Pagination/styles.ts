@@ -27,7 +27,7 @@ export const Pagination = styled.div<TPaginationStyle>`
     }
     .selected {
       * {
-        color: ${props => props.theme.colors.primary} !important;
+        color: ${props => props.theme.colors.thirdary} !important;
     }
     }
   }

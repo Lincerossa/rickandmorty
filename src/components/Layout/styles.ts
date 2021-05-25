@@ -2,13 +2,30 @@ import styled from 'styled-components'
 
 export const Layout = styled.main`
   min-height: 100vh;
+  background-color: ${(props: any) => props.theme.colors.secondary};
 `
 export const Header = styled.div`
-  background-color: ${(props: any) => props.theme.colors.secondary};
+  background-color: ${(props: any) => props.theme.colors.primary};
   box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px;
+  padding: 1rem 0;
+  svg {
+    fill: white;
+    &:hover {
+      fill: ${(props: any) => props.theme.colors.thirdary};
+    }
+  }
 `
 export const Footer = styled.div`
   background-color: ${(props: any) => props.theme.colors.secondary};
+  svg {
+    fill: white;
+    &:hover {
+      fill: ${(props: any) => props.theme.colors.thirdary};
+    }
+  }
+`
+export const Content = styled.div`
+  min-height: 100vh;
 `
 
 export const Loading = styled.div`
@@ -30,7 +47,7 @@ export const Pulse = styled.div`
   height: 80px;
   div {
     position: absolute;
-    border: 4px solid #fff;
+    border: 4px solid ${props => props.theme.colors.thirdary};
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
