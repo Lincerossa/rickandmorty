@@ -16,7 +16,7 @@ export const Header = styled.div`
   }
 `
 export const Footer = styled.div`
-  background-color: ${(props: any) => props.theme.colors.secondary};
+  background-color: ${(props: any) => props.theme.colors.primary};
   svg {
     fill: white;
     &:hover {
