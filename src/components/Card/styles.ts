@@ -17,16 +17,6 @@ export const Card = styled.div`
 export const ImageWrapper = styled.div<{layout: string}>`
   position: relative;
   overflow: hidden;
-  :before{
-    content: "";
-    position: absolute;
-    background: linear-gradient(to top,rgba(0,0,0,.5),transparent);
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-    z-index: 1;
-  }
   ${(props) => props.layout === 'auto' && `
     padding-top: 100%;
     img {
