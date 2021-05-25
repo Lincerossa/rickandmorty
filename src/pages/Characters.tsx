@@ -8,6 +8,7 @@ import deelay from '../utility/deelay'
 
 export default () => {
   const [page, setPage] = useState<number>(1)
+
   const [data, setData]= useState<any>(null)
   const [isLoading, setLoading] = useState<boolean>(false)
   const items : [] | TCardWithSlug[] = data ? produceListItems(data.results) : []
@@ -31,6 +32,7 @@ export default () => {
     setPage(selected + 1)
   }
 
+
   return (
     <Layout isLoading={isLoading}>
       {!isLoading && items?.length === 0 && <div>NO DATA</div>}
@@ -41,18 +43,18 @@ export default () => {
       </Wrapper>
 
       {data?.info?.pages && 
-          <Wrapper size="large">
-            <Padder size="small"><Pagination
-              previousLabel="Prev"
-              nextLabel="Next"
-              initialPage={page - 1}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={3}
-              onPageChange={onPageChange}
-              pageCount={data.info.pages}
-              align="right"
-            /></Padder>
-          </Wrapper>}
+        <Wrapper size="large">
+          <Padder size="small"><Pagination
+            previousLabel="Prev"
+            nextLabel="Next"
+            initialPage={page - 1}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={3}
+            onPageChange={onPageChange}
+            pageCount={data.info.pages}
+            align="right"
+          /></Padder>
+        </Wrapper>}
     </Layout>
   )
 }

@@ -9,6 +9,21 @@ export const ListItem = styled.div`
   }
 `
 
+export const InputWrapper = styled.div`
+  display: none;
+
+  @media (min-width: 978px){
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+`
+export const Input = styled.input`
+  cursor: pointer;
+`
+
 export const SkeletonCard = styled.div`
   width: 100%;
   height: 300px;
