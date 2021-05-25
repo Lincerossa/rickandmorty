@@ -6,7 +6,7 @@ import { TImageProps } from './types'
 
 const MyImage = ({ image, hasShadow } : TImageProps) => (
   <S.ImageWrapper>
-    <img src={image.src} alt="" />
+    <img src={image.src} alt="" loading="lazy" />
     {hasShadow && <S.Shadow />}
     {image?.description && <S.Description>{image.description}</S.Description>}
   </S.ImageWrapper>

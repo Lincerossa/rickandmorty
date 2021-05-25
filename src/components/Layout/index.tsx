@@ -6,8 +6,8 @@ import * as S from './styles'
 import { TLayoutProps } from './types'
 
 
-export default ({ children }: TLayoutProps) => (
-  <div>
+export default ({ children, isLoading }: TLayoutProps) => (
+  <S.Layout>
     <S.Header>
       <Wrapper size="large">
         <Padder size="regular">
@@ -23,6 +23,9 @@ export default ({ children }: TLayoutProps) => (
         </Padder>
       </Wrapper>
     </S.Footer>
-  </div>
+    <S.Loading isLoading={isLoading}>
+      <S.Pulse><div></div><div></div></S.Pulse>
+    </S.Loading>
+  </S.Layout>
 )
 

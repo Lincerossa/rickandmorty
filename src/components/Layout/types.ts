@@ -1,3 +1,4 @@
 export type TLayoutProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  isLoading: boolean 
 }

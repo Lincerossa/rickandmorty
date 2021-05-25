@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { ListOfCards, Background, Wrapper, Padder, Pagination } from '../../components'
+import { ListOfCards, Background, Wrapper, Padder, Pagination, Layout } from '../../components'
 import theme from '../../styles/theme'
 import { TCardWithSlug } from '../../components/ListOfCards/types'
 import transformData from './utility/transformData'
@@ -8,7 +8,7 @@ import transformData from './utility/transformData'
 export default () => {
   const [page, setPage] = useState<number>(1)
   const [data, setData]= useState<any>(null)
-  const [, setLoading] = useState<boolean>(false)
+  const [isLoading, setLoading] = useState<boolean>(false)
   const [items, setItems] = useState<[] | TCardWithSlug[]>([])
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default () => {
     setPage(selected + 1)
   }
 
-  return (<div>
+  return (<Layout isLoading={isLoading}>
     {items?.length > 0 && (
       <Background color="" background={theme.colors.secondary}>
         <Wrapper size="large">
@@ -52,5 +52,5 @@ export default () => {
         </Wrapper>
       </Background>
     )}
-  </div>)
+  </Layout>)
 }
