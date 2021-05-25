@@ -8,7 +8,7 @@ import transformData from './utility/transformData'
 export default () => {
   const [page, setPage] = useState<number>(1)
   const [data, setData]= useState<any>(null)
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [, setLoading] = useState<boolean>(false)
   const [items, setItems] = useState<[] | TCardWithSlug[]>([])
 
   useEffect(() => {
