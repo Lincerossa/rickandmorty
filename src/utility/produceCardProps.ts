@@ -1,4 +1,4 @@
-import { TCardWithSlug } from '../../../components/ListOfCards/types'
+import { TCardWithSlug } from '../components/ListOfCards/types'
 
 
 export default (item: any) : TCardWithSlug => ({

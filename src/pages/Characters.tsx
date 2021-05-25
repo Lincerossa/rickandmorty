@@ -1,10 +1,10 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../../components'
+import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../components'
 
-import { TCardWithSlug } from '../../components/ListOfCards/types'
-import produceListItems from './utility/produceListItems'
-import deelay from './utility/deelay'
+import { TCardWithSlug } from '../components/ListOfCards/types'
+import produceListItems from '../utility/produceListItems'
+import deelay from '../utility/deelay'
 
 export default () => {
   const [page, setPage] = useState<number>(1)

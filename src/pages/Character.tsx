@@ -1,11 +1,11 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { Wrapper, Padder, Hero, Layout } from '../../components'
-import produceHeroProps from './utility/produceHeroProps'
+import { Wrapper, Padder, Card, Layout } from '../components'
+import produceCardProps from '../utility/produceCardProps'
 
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
-  const heroProps = data && produceHeroProps(data)
+  const cardProps = data && produceCardProps(data)
   const [isLoading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default ({match: {params: {id}}}: any) => {
 
   return (
     <Layout isLoading={isLoading}>
-      {data && <Hero {...heroProps} />}
+      {data && <Wrapper size="large"><Padder size="large"><Card {...cardProps} /></Padder></Wrapper>}
     </Layout>
   )
 }
