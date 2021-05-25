@@ -64,33 +64,6 @@ export const Description = styled.div`
   z-index: 1;
 `
 
-export const TagsWrapper = styled.div`
-  display: flex;
-  margin-bottom: 1rem;
-  letter-spacing: .04em;
-`
-export const Tag = styled.div`
-  border-radius: 4px;
-  color: white;
-  font-size: .6rem;
-  font-weight: 600;
-  font-family: sans-serif;
-  position: relative;
-  margin-right: 1rem;
-  text-transform: uppercase;
-  &:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-    border-radius: 50%;
-    right: -.7rem;
-    width: .4rem;
-    height: .4rem;
-    background: ${(props) => props.theme.colors.light};
-  }
-`
-
 export const Dot = styled.div`
   border-radius: 50%;
   width: .75rem;
