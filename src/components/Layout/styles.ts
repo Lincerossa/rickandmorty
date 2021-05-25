@@ -8,6 +8,11 @@ export const Header = styled.div`
   background-color: ${(props: any) => props.theme.colors.primary};
   box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px;
   padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
   svg {
     fill: white;
     &:hover {
@@ -26,6 +31,7 @@ export const Footer = styled.div`
 `
 export const Content = styled.div`
   min-height: 100vh;
+  padding-top: 5rem;
 `
 
 export const Loading = styled.div`

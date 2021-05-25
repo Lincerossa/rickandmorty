@@ -5,5 +5,5 @@ import App from './App'
 test('/', () => {
   render(<App />)
   const linkElement = screen.queryAllByText('RAM')
-  expect(linkElement.length).toBe(2)
+  expect(linkElement.length).toBe(0)
 })

@@ -1,16 +1,18 @@
+import React, { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
-import Character from './pages/Character'
-import Characters from './pages/Characters'
-import NotFound from './pages/NotFound'
+import {Layout }  from './components'
+const Character = React.lazy(() =>  import('./pages/Character'))
+const Characters = React.lazy(() =>  import('./pages/Characters'))
 
 const Routes = () => (
-  <HashRouter>
-    <Switch>
-      <Route exact path="/:id" component={Character} />
-      <Route exact path="/" component={Characters} />
-      <Route component={NotFound} />
-    </Switch>
-  </HashRouter>
+  <Suspense fallback={<HashRouter><Layout isLoading>loading</Layout></HashRouter>}>
+    <HashRouter>
+      <Switch>
+        <Route exact path="/:id" component={Character} />
+        <Route exact path="/" component={Characters} />
+      </Switch>
+    </HashRouter>
+  </Suspense>
 )
 
 export default Routes
