@@ -3,15 +3,14 @@ import axios from 'axios'
 import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../components'
 
 import { TCardWithSlug } from '../components/ListOfCards/types'
-import produceListItems from '../utility/produceListItems'
+import produceCardProps from '../utility/produceCardProps'
 import deelay from '../utility/deelay'
 
 export default () => {
   const [page, setPage] = useState<number>(1)
-
   const [data, setData]= useState<any>(null)
   const [isLoading, setLoading] = useState<boolean>(false)
-  const items : [] | TCardWithSlug[] = data ? produceListItems(data.results) : []
+  const items : [] | TCardWithSlug[] = data?.results?.map(produceCardProps) || []
 
   useEffect(() => {
     async function fetchData(){

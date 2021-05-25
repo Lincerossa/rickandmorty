@@ -1,6 +1,5 @@
 import { TCardWithSlug } from '../components/ListOfCards/types'
 
-
 export default (item: any) : TCardWithSlug => ({
   image: {src: item.image, alt: item.name},
   dotColor: item.status === 'Alive' ? 'green' : 'red',

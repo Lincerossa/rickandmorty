@@ -1,10 +1,9 @@
-import produceListItems from './produceListItems'
+import produceCardProps from './produceCardProps'
 
-test('produceListItems', () => {
-  expect(typeof produceListItems).toBe('function')
-  expect(produceListItems([])).toEqual([])
+test('produceCardProps', () => {
+  expect(typeof produceCardProps).toBe('function')
 })
 test('status check', () => {
-  expect(typeof produceListItems).toBe('function')
-  expect(produceListItems([{status: 'Alive'}])[0].dotColor).toEqual('green')
+  expect(typeof produceCardProps).toBe('function')
+  expect(produceCardProps({status: 'Alive'}).dotColor).toEqual('green')
 })
