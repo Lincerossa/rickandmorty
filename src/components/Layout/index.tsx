@@ -6,7 +6,7 @@ import * as S from './styles'
 import Logo from './LogoSvg'
 import { TLayoutProps } from './types'
 
-export default ({ children, isLoading }: TLayoutProps) => {
+const Layout = ({ children, isLoading }: TLayoutProps) => {
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -37,3 +37,4 @@ export default ({ children, isLoading }: TLayoutProps) => {
   )
 }
 
+export default React.memo(Layout)

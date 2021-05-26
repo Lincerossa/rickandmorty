@@ -1,4 +1,4 @@
-export type TParagraphProps ={
+export type TParagraphProps = {
   label: string,
-  data: any
+  data?: string[][]
 }
