@@ -15,11 +15,10 @@ export const Tag = styled.div<{isLast: boolean, isInParagraph?: boolean}>`
   margin-right: 1rem;
   text-transform: uppercase;
 
-
   @media (min-width: 978px){
-    
     font-size: ${props => props.isInParagraph ? '1rem' : '.6rem'};
   }
+
   &:after {
     content: "";
     position: absolute;
