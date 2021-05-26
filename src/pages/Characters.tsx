@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../components'
+import { ListOfCards, Wrapper, Padder, Pagination, Background, Layout } from '../components'
 import { TCardWithSlug } from '../components/ListOfCards/types'
 import produceCardProps from '../utility/produceCardProps'
 import deelay from '../utility/deelay'
@@ -35,6 +35,7 @@ export default () => {
     <Layout isLoading={loadingStatus === 'started'}>
 
       <Wrapper size="large">
+        
         <Padder size="large">
           <ListOfCards
             items={items}
@@ -48,13 +49,13 @@ export default () => {
         <Wrapper size="large">
           <Padder size="small"><Pagination
             previousLabel="Prev"
+            total={data?.info?.count}
             nextLabel="Next"
             initialPage={page - 1}
             marginPagesDisplayed={2}
             pageRangeDisplayed={3}
             onPageChange={onPageChange}
             pageCount={data.info.pages}
-            align="right"
           /></Padder>
         </Wrapper>}
     </Layout>

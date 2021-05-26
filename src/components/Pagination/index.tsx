@@ -3,8 +3,9 @@ import ReactPaginate from 'react-paginate'
 import * as S from './styles'
 import { TPaginationProps } from './types'
 
-export default ({ initialPage, pageCount, pageRangeDisplayed, onPageChange, previousLabel, nextLabel, marginPagesDisplayed, align} : TPaginationProps) => (
-  <S.Pagination align={align}>
+export default ({ initialPage, total, pageCount, pageRangeDisplayed, onPageChange, previousLabel, nextLabel, marginPagesDisplayed} : TPaginationProps) => (
+  <S.Pagination>
+    <S.Total>{total} results</S.Total>
     <ReactPaginate
       previousLabel={previousLabel}
       nextLabel={nextLabel}

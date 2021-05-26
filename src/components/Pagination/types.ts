@@ -10,5 +10,5 @@ export interface TPaginationProps extends TPaginationStyle {
   marginPagesDisplayed: number
   previousLabel: string,
   nextLabel: string,
-
+  total?: number | undefined
 }

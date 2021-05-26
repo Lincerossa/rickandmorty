@@ -3,18 +3,18 @@ import {TPaginationStyle} from './types'
 
 
 export const Pagination = styled.div<TPaginationStyle>`
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   ul {
     margin: 0;
     display: flex;
     padding: 0;
     list-style: none;
-    justify-content: ${props => props.align === 'right' ? 'flex-end ': 'flex-start'};
 
     li {
       cursor: pointer;
-      margin: 0 .25rem;
-      padding: .25rem;
+      padding: 0 .25rem;
       border-radius: 3px;
     }
 
@@ -31,4 +31,8 @@ export const Pagination = styled.div<TPaginationStyle>`
     }
     }
   }
+`
+
+export const Total = styled.div`
+  color: ${props => props.theme.colors.light};
 `
