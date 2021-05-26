@@ -1,14 +1,14 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { Wrapper, Padder, Card, Layout, Tags } from '../components'
+import { Wrapper, Padder, Card, Layout, Background, Paragraph} from '../components'
 import produceCardProps from '../utility/produceCardProps'
-import { Background } from '../components/Background/styles'
 import theme from '../styles/theme'
 import * as C from '../styles/common'
 
+
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
-  const [loadingStatus, setLoadingStatus] = useState<string>('')
+  const [loadingStatus, setLoadingStatus] = useState<'started' | 'done' | null>(null)
   
   useEffect(() => {
     if(!id) return
@@ -22,7 +22,7 @@ export default ({match: {params: {id}}}: any) => {
           paragraphs: [
             {
               label: 'Character',
-              data:character
+              data: character
             },
             {
               label: 'Location',
@@ -34,9 +34,9 @@ export default ({match: {params: {id}}}: any) => {
             },
             {
               label: 'Chapters',
-              data: episode?.length && await axios.get(`https://rickandmortyapi.com/api/episode/${episode.map((url:string) => url.split('/').slice(-1))}`).then(response => episode.length > 1 ? response.data : [response.data])
+              data: episode?.length && await axios.get(`https://rickandmortyapi.com/api/episode/${episode.map((url:string) => url.split('/').slice(-1))}`).then(response => [response.data].flat(1))
             }
-          ].filter(({data}) => data)
+          ]
         })
       } catch (error) {
         setData(null)
@@ -47,6 +47,8 @@ export default ({match: {params: {id}}}: any) => {
   }, [id])
 
   const { cardProps, paragraphs } = data || {}
+
+  console.log(data)
   return (
     <Layout isLoading={loadingStatus === 'started'}>
       {
@@ -60,20 +62,11 @@ export default ({match: {params: {id}}}: any) => {
             </Padder>
           </Wrapper>
           {
-            paragraphs.map((e: any, i:number) =>  (
+            paragraphs.map(({label, data}: {label: string, data: any}, i:number) =>  (
               <Background background={theme.colors[i % 2 ? 'secondary' : 'primary']} color="white">
                 <Wrapper size="large">
                   <Padder size="large">
-                    <h2>{e.label}</h2>
-                    {
-                      e.label === 'Chapters' 
-                        ? 
-                        e.data.map((chapter: any) => <Tags key={chapter.name} items={[chapter.episode, chapter.name, chapter.air_date]} />)
-                        : <div>
-                          {Object.entries(e.data)
-                            .filter(([key, val]) => typeof val === 'string' || Array.isArray(val))
-                            .map(([key,val]) => <div>{key}: <strong>{typeof val === 'string' && val} {Array.isArray(val) && val.length}</strong></div>)}
-                        </div>}
+                    <Paragraph label={label} data={data} />
                   </Padder>
                 </Wrapper>
               </Background>

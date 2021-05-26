@@ -9,7 +9,7 @@ import * as C from '../styles/common'
 export default () => {
   const [page, setPage] = useState<number>(1)
   const [data, setData]= useState<any>(null)
-  const [loadingStatus, setLoadingStatus] = useState<string>('')
+  const [loadingStatus, setLoadingStatus] = useState<'started' | 'done' | null>(null)
   const items : [] | TCardWithSlug[] = data?.results?.map(produceCardProps) || []
 
   useEffect(() => {
