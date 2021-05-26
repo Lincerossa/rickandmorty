@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import { ListOfCards, Wrapper, Padder, Pagination, Background, Layout } from '../components'
+import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../components'
 import { TCardWithSlug } from '../components/ListOfCards/types'
 import produceCardProps from '../utility/produceCardProps'
 import deelay from '../utility/deelay'
@@ -33,9 +33,7 @@ export default () => {
 
   return (
     <Layout isLoading={loadingStatus === 'started'}>
-
       <Wrapper size="large">
-        
         <Padder size="large">
           <ListOfCards
             items={items}

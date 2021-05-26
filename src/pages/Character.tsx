@@ -9,19 +9,35 @@ import * as C from '../styles/common'
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
   const [loadingStatus, setLoadingStatus] = useState<string>('')
-  const cardProps = data && produceCardProps(data.character)
-
+  
   useEffect(() => {
     if(!id) return
     async function fetchData(){
       setLoadingStatus('started')
       try {
         const character = await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(result => result.data)
-        const location = character?.location?.url && await axios.get(character.location.url).then(result => result.data)  
-        const origin = character?.origin?.url && await axios.get(character.origin.url).then(result => result.data)
-        const episodes = character.episode?.length > 0 && character.episode.map((url:string) => url.split('/').slice(-1))
-        const chapters = episodes?.length && await axios.get(`https://rickandmortyapi.com/api/episode/${episodes}`).then(response => episodes.length > 1 ? response.data : [response.data])
-        setData({ character, chapters, location, origin })
+        const { episode, location, origin } = character
+        setData({
+          cardProps: produceCardProps(character),
+          paragraphs: [
+            {
+              label: 'Character',
+              data:character
+            },
+            {
+              label: 'Location',
+              data: location?.url && await axios.get(location.url).then(result => result.data)
+            },
+            {
+              label: 'Origin',
+              data:  origin?.url && await axios.get(origin.url).then(result => result.data)
+            },
+            {
+              label: 'Chapters',
+              data: episode?.length && await axios.get(`https://rickandmortyapi.com/api/episode/${episode.map((url:string) => url.split('/').slice(-1))}`).then(response => episode.length > 1 ? response.data : [response.data])
+            }
+          ].filter(({data}) => data)
+        })
       } catch (error) {
         setData(null)
       }
@@ -30,28 +46,39 @@ export default ({match: {params: {id}}}: any) => {
     fetchData()
   }, [id])
 
-  console.log({data})
-  
+  const { cardProps, paragraphs } = data || {}
   return (
     <Layout isLoading={loadingStatus === 'started'}>
       {
         loadingStatus === 'done' && !data && <C.EmptyData>No existing character!</C.EmptyData>
       }
-      {data && (
+      {cardProps && (
         <>
           <Wrapper size="big">
             <Padder size="large">
               <Card {...cardProps} />
             </Padder>
           </Wrapper>
-          {data?.chapters?.length > 0 && <Background background={theme.colors.secondary} color="white">
-            <Wrapper size="large">
-              <Padder size="large">
-                <h2>Chapters</h2>
-                {data.chapters.map((chapter: any) => <Tags key={chapter.name} items={[chapter.episode, chapter.name, chapter.air_date]} /> )}
-              </Padder>
-            </Wrapper>
-          </Background>}
+          {
+            paragraphs.map((e: any, i:number) =>  (
+              <Background background={theme.colors[i % 2 ? 'secondary' : 'primary']} color="white">
+                <Wrapper size="large">
+                  <Padder size="large">
+                    <h2>{e.label}</h2>
+                    {
+                      e.label === 'Chapters' 
+                        ? 
+                        e.data.map((chapter: any) => <Tags key={chapter.name} items={[chapter.episode, chapter.name, chapter.air_date]} />)
+                        : <div>
+                          {Object.entries(e.data)
+                            .filter(([key, val]) => typeof val === 'string' || Array.isArray(val))
+                            .map(([key,val]) => <div>{key}: <strong>{typeof val === 'string' && val} {Array.isArray(val) && val.length}</strong></div>)}
+                        </div>}
+                  </Padder>
+                </Wrapper>
+              </Background>
+            ))
+          }
         </>
       )}
     </Layout>
