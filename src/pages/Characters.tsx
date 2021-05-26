@@ -54,7 +54,6 @@ export default () => {
       <Wrapper size="large">
         <Padder size="large">
           <FiltersBar onChange={handleFilersBarChange} initialState={{name, status, gender}} />
-
           <ListOfCards
             items={items}
             isLoading={loadingStatus === 'started'}
