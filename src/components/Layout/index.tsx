@@ -6,7 +6,6 @@ import * as S from './styles'
 import Logo from './LogoSvg'
 import { TLayoutProps } from './types'
 
-
 export default ({ children, isLoading }: TLayoutProps) => {
   const { pathname } = useLocation()
 
