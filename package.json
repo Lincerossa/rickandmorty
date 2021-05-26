@@ -24,7 +24,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf build/ ",
+    "release": "semantic-release --no-ci"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "branches": [
+      "feat/semantic-versioning"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -93,6 +106,11 @@
     "@types/axios": "^0.14.0",
     "@types/react-paginate": "^7.1.0",
     "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.9"
+    "@types/styled-components": "^5.1.9",
+    "semantic-release": "^17.4.3",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/release-notes-generator": "^9.0.2"
   }
 }
