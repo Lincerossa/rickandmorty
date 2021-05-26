@@ -4,16 +4,17 @@ import { Wrapper, Padder, Card, Layout, Tags } from '../components'
 import produceCardProps from '../utility/produceCardProps'
 import { Background } from '../components/Background/styles'
 import theme from '../styles/theme'
+import * as C from '../styles/common'
 
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [loadingStatus, setLoadingStatus] = useState<string>('')
   const cardProps = data && produceCardProps(data.character)
 
   useEffect(() => {
     if(!id) return
     async function fetchData(){
-      setLoading(true)
+      setLoadingStatus('started')
       try {
         const character = await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(result => result.data)
         const location = character?.location?.url && await axios.get(character.location.url).then(result => result.data)  
@@ -24,7 +25,7 @@ export default ({match: {params: {id}}}: any) => {
       } catch (error) {
         setData(null)
       }
-      setLoading(false)
+      setLoadingStatus('done')
     }
     fetchData()
   }, [id])
@@ -32,8 +33,10 @@ export default ({match: {params: {id}}}: any) => {
   console.log({data})
   
   return (
-    <Layout isLoading={isLoading}>
-      {!isLoading && !data && <div>NO DATA</div>}
+    <Layout isLoading={loadingStatus === 'started'}>
+      {
+        loadingStatus === 'done' && !data && <C.EmptyData>No existing character!</C.EmptyData>
+      }
       {data && (
         <>
           <Wrapper size="big">
@@ -45,11 +48,10 @@ export default ({match: {params: {id}}}: any) => {
             <Wrapper size="large">
               <Padder size="large">
                 <h2>Chapters</h2>
-                {data.chapters.map((chapter: any) => <Tags items={[chapter.episode, chapter.name, chapter.air_date]} /> )}
+                {data.chapters.map((chapter: any) => <Tags key={chapter.name} items={[chapter.episode, chapter.name, chapter.air_date]} /> )}
               </Padder>
             </Wrapper>
           </Background>}
-          
         </>
       )}
     </Layout>

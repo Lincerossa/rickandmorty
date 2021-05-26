@@ -1,27 +1,27 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
 import { ListOfCards, Wrapper, Padder, Pagination, Layout } from '../components'
-
 import { TCardWithSlug } from '../components/ListOfCards/types'
 import produceCardProps from '../utility/produceCardProps'
 import deelay from '../utility/deelay'
+import * as C from '../styles/common'
 
 export default () => {
   const [page, setPage] = useState<number>(1)
   const [data, setData]= useState<any>(null)
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [loadingStatus, setLoadingStatus] = useState<string>('')
   const items : [] | TCardWithSlug[] = data?.results?.map(produceCardProps) || []
 
   useEffect(() => {
     async function fetchData(){
-      setLoading(true)
+      setLoadingStatus('started')
       const result = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
         .then(result => result.data)
         .catch(() => setData(null))
 
       await deelay(200) // this is just for a better ui effect
       if(result) setData(result)
-      setLoading(false)
+      setLoadingStatus('done')
     }
     fetchData()
   }, [page])
@@ -31,13 +31,16 @@ export default () => {
     setPage(selected + 1)
   }
 
-
   return (
-    <Layout isLoading={isLoading}>
-      {!isLoading && items?.length === 0 && <div>NO DATA</div>}
+    <Layout isLoading={loadingStatus === 'started'}>
+
       <Wrapper size="large">
         <Padder size="large">
-          <ListOfCards items={items} isLoading={isLoading} />
+          <ListOfCards
+            items={items}
+            isLoading={loadingStatus === 'started'}
+          />
+          {loadingStatus === 'done' && items?.length === 0 && <C.EmptyData>No Data</C.EmptyData>}
         </Padder>
       </Wrapper>
 
