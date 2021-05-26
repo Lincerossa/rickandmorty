@@ -1,3 +1,3 @@
-export default ({episode, name, air_date}: {episode: string, name: string, air_date: string}) => {
+export default ({episode, name}: {episode: string, name: string}) => {
   return [episode,name].filter(e => e)
 }

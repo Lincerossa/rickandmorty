@@ -7,6 +7,7 @@ export default ({ initialPage, total, pageCount, pageRangeDisplayed, onPageChang
   <S.Pagination>
     <S.Total>{total} results</S.Total>
     <ReactPaginate
+      forcePage={initialPage}
       previousLabel={previousLabel}
       nextLabel={nextLabel}
       initialPage={initialPage}
