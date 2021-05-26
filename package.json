@@ -36,6 +36,7 @@
       "@semantic-release/git"
     ],
     "branches": [
+      "master",
       "feat/semantic-versioning"
     ]
   },
