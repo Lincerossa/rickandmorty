@@ -10,7 +10,7 @@ export default ({label, data}: TParagraphProps) => {
       <h2>{label}</h2>
       {data
         ? data.map((items: string []) => <Tags key={items[0]} items={items} />)
-        : <small>Missing data</small>
+        : <small>Unknown</small>
       }
     </S.Paragraph>
   )

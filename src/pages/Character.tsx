@@ -61,8 +61,8 @@ export default ({match: {params: {id}}}: any) => {
         </Padder>
       </Wrapper>}
 
-      {paragraphs && paragraphs.map(({label, data}: {label: string, data: string[][]}, i:number) =>  (
-        <Background background={theme.colors[i % 2 ? 'secondary' : 'primary']} color="white">
+      {paragraphs?.map(({label, data}: {label: string, data: string[][]}, i:number) =>  (
+        <Background key={label} background={theme.colors[i % 2 ? 'secondary' : 'primary']} color="white">
           <Wrapper size="large">
             <Padder size="large">
               <Paragraph label={label} data={data} />
