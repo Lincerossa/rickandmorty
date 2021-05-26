@@ -5,15 +5,21 @@ export const TagsWrapper = styled.div`
   margin-bottom: 1rem;
   letter-spacing: .04em;
 `
-export const Tag = styled.div<{isLast: boolean}>`
+export const Tag = styled.div<{isLast: boolean, isInParagraph?: boolean}>`
   border-radius: 4px;
   color: white;
   font-size: .6rem;
-  font-weight: 600;
+  font-weight: ${props => (props.isInParagraph && props.isLast) ? 100 : 600};
   font-family: sans-serif;
   position: relative;
   margin-right: 1rem;
   text-transform: uppercase;
+
+
+  @media (min-width: 978px){
+    
+    font-size: ${props => props.isInParagraph ? '1rem' : '.6rem'};
+  }
   &:after {
     content: "";
     position: absolute;

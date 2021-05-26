@@ -56,7 +56,7 @@ export default ({match: {params: {id}}}: any) => {
         loadingStatus === 'done' && !data && <C.EmptyData>No existing character!</C.EmptyData>
       }
       {cardProps && <Wrapper size="big">
-        <Padder size="large">
+        <Padder size="regular">
           <Card {...cardProps} />
         </Padder>
       </Wrapper>}
@@ -64,7 +64,7 @@ export default ({match: {params: {id}}}: any) => {
       {paragraphs?.map(({label, data}: {label: string, data: string[][]}, i:number) =>  (
         <Background key={label} background={theme.colors[i % 2 ? 'secondary' : 'primary']} color="white">
           <Wrapper size="large">
-            <Padder size="large">
+            <Padder size="small">
               <Paragraph label={label} data={data} />
             </Padder>
           </Wrapper>
