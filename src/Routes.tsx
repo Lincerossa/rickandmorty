@@ -5,14 +5,14 @@ const Character = React.lazy(() =>  import('./pages/Character'))
 const Characters = React.lazy(() =>  import('./pages/Characters'))
 
 const Routes = () => (
-  <Suspense fallback={<HashRouter><Layout isLoading>loading</Layout></HashRouter>}>
-    <HashRouter>
-      <Switch>
+  <HashRouter>
+    <Switch>
+      <Suspense fallback={<Layout isLoading></Layout>}>
         <Route exact path="/:id" component={Character} />
         <Route exact path="/" component={Characters} />
-      </Switch>
-    </HashRouter>
-  </Suspense>
+      </Suspense>
+    </Switch>
+  </HashRouter>
 )
 
 export default Routes
