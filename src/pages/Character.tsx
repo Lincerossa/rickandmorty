@@ -7,9 +7,11 @@ import produceParagraphPropsFromData from '../utility/produceParagraphPropsFromD
 import theme from '../styles/theme'
 import * as C from '../styles/common'
 
+type TLoading = 'started' | 'done' | null
+
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
-  const [loadingStatus, setLoadingStatus] = useState<'started' | 'done' | null>(null)
+  const [loadingStatus, setLoadingStatus] = useState<TLoading>(null)
   
   useEffect(() => {
     if(!id) return
