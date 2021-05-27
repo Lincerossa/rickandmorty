@@ -6,6 +6,7 @@ import { useApi } from '../ApiProvider'
 import { ListOfCards, Wrapper, Padder, Pagination, Layout, FiltersBar } from '../components'
 import { TCardWithSlug } from '../components/ListOfCards/types'
 import produceCardProps from '../utility/produceCardProps'
+import cleanObject from '../utility/cleanObject'
 import deelay from '../utility/deelay'
 import * as C from '../styles/common'
 
@@ -52,13 +53,12 @@ export default ({ location: { search }} : TPageProps) => {
     fetchData()
   }, [query, history, getCharachters])
 
-
   function handleFilersBarChange(name: string, value: string){
-    setQueryObject(prevState => ({
+    setQueryObject(prevState => (cleanObject({
       ...prevState,
       page: 1,
       [`${name}`]: value
-    }))
+    })))
   }
 
   function onPageChange({selected} : {selected: number}) {
