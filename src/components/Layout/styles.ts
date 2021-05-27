@@ -29,6 +29,16 @@ export const Footer = styled.div`
     }
   }
 `
+export const FooterInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  * {
+  display: flex;
+  align-items: center;
+  }
+`
 export const Content = styled.div`
   min-height: 100vh;
   padding-top: 5rem;
