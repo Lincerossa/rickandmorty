@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Lincerossa/rickandmorty/compare/v1.1.0...v1.2.0) (2021-05-27)
+
+
+### Features
+
+* 🚀 axios-cache-adapter: cached the axios apis with the same urls for 15mins (client-side). Provider/Consumer pattern implemented here (see ApiProvider) ([44b1d5f](https://github.com/Lincerossa/rickandmorty/commit/44b1d5fcea47fdc37d3060b009b804825c728126))
+
 # [1.1.0](https://github.com/Lincerossa/rickandmorty/compare/v1.0.0...v1.1.0) (2021-05-27)
 
 
