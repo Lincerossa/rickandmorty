@@ -2,14 +2,16 @@ import styled from 'styled-components'
 
 
 export const FiltersBar = styled.div`
-  padding: .5rem;
+  padding: .75rem;
   margin-bottom: 1rem;
   color: ${props => props.theme.colors.secondary};
   background-color: ${props => props.theme.colors.primary};
   display: flex;
   justify-content: center;
+
   @media (min-width: 978px){
     justify-content: flex-end;
+
   }
 
   select {
@@ -17,12 +19,13 @@ export const FiltersBar = styled.div`
   }
 
   input, select {
+    max-width: 100px;
     padding: 0 .5rem;
     height: 2rem;
     font-size: .75rem;
     font-family: sans-serif;
     outline: none;
-    margin-left: .5rem;
+    margin-left: .75rem;
     color: ${props => props.theme.colors.secondary};
     &:hover {
       color: ${props => props.theme.colors.primary};
@@ -32,6 +35,7 @@ export const FiltersBar = styled.div`
     }
     @media (min-width: 978px){
       font-size: 1rem;
+      max-width: inherit;
     }
   }
 `
