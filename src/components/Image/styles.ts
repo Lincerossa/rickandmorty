@@ -16,7 +16,7 @@ export const Shadow = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background-image: linear-gradient(transparent, rgb(0,0,0,.7));
+  background-image: linear-gradient(transparent, rgb(0,0,0,.5));
   top: 0;
   z-index: 1;
 `
