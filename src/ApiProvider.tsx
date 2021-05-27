@@ -22,8 +22,7 @@ function createAxiosInstance() {
       return response
     },
     function(error) {
-      const text = error?.response?.data?.details || error?.response?.data?.message || 'something wrong'
-      return Promise.reject(text)
+      return Promise.reject(error)
     }
   )
 
