@@ -14,8 +14,3 @@
 ![alt text](https://res.cloudinary.com/dmgymopan/image/upload/q_auto:low/v1622121620/Screenshot_2021-05-27_at_15.18.56_j6kjmh.png)
 
 ![alt text](https://res.cloudinary.com/dmgymopan/image/upload/q_auto:low/v1622121915/Screenshot_2021-05-27_at_15.19.36_mqoojw.png)
-
-![alt text](https://res.cloudinary.com/dmgymopan/image/upload/q_auto:low/v1622121957/Screenshot_2021-05-27_at_15.19.10_epq0tl.png)
-
-
-
