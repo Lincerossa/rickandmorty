@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Lincerossa/rickandmorty/compare/v1.2.0...v1.3.0) (2021-05-27)
+
+
+### Features
+
+* deps fully updated ([a2ca74f](https://github.com/Lincerossa/rickandmorty/commit/a2ca74f89d13b031c422df41e5b119e38231f068))
+
 # [1.2.0](https://github.com/Lincerossa/rickandmorty/compare/v1.1.0...v1.2.0) (2021-05-27)
 
 
