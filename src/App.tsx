@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyle from './styles/global'
-
+import ApiProvider from './ApiProvider'
 import Routes from './Routes'
 
 const App = () => {
@@ -10,7 +10,9 @@ const App = () => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Routes />
+        <ApiProvider>
+          <Routes />
+        </ApiProvider>
       </ThemeProvider>
     </>
   )

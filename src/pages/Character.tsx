@@ -1,5 +1,5 @@
-import React, { useEffect, useState} from 'react'
-import axios from 'axios'
+import { useEffect, useState} from 'react'
+import { useApi } from '../ApiProvider'
 import { Wrapper, Padder, Card, Layout, Background, Paragraph} from '../components'
 import produceCardProps from '../utility/produceCardProps'
 import produceParagraphPropsFromChapter from '../utility/produceParagraphPropsFromChapter'
@@ -9,17 +9,24 @@ import * as C from '../styles/common'
 
 type TLoading = 'started' | 'done' | null
 
+type TEpisode = {
+  name: string,
+  episode: string
+}
 export default ({match: {params: {id}}}: any) => {
   const [data, setData]= useState<any>(null)
+  const {getCharachter, get, getEpisode } : any = useApi()
   const [loadingStatus, setLoadingStatus] = useState<TLoading>(null)
   
   useEffect(() => {
-    if(!id) return
     async function fetchData(){
       setLoadingStatus('started')
       try {
-        const character = await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(e => e.data)
+        const character = await getCharachter(id)
         const { episode, location, origin } = character
+        const locationUrl = location?.url?.split('api')?.slice(-1)?.[0]
+        const originUrl = origin?.url?.split('api')?.slice(-1)?.[0]
+        const episodeIds = episode?.map((url:string) => url.split('/').slice(-1))
         setData({
           cardProps: produceCardProps(character),
           paragraphs: [
@@ -29,16 +36,16 @@ export default ({match: {params: {id}}}: any) => {
             },
             {
               label: 'Location',
-              data: location?.url && await axios.get(location.url).then(e => produceParagraphPropsFromData(e.data))
+              data: locationUrl && await get(locationUrl).then(produceParagraphPropsFromData)
             },
             {
               label: 'Origin',
-              data: origin?.url && await axios.get(origin.url).then(e => produceParagraphPropsFromData(e.data))
+              data: originUrl && await get(originUrl).then(produceParagraphPropsFromData)
             },
             {
               label: 'Chapters',
               type: 'tag',
-              data: episode?.length && await axios.get(`https://rickandmortyapi.com/api/episode/${episode.map((url:string) => url.split('/').slice(-1))}`).then(response => [response.data].flat(1).map(produceParagraphPropsFromChapter))
+              data: episodeIds && await getEpisode(episodeIds).then((response: TEpisode[] | TEpisode) => [response].flat(1).map(produceParagraphPropsFromChapter))
             }
           ]
         })
@@ -48,7 +55,7 @@ export default ({match: {params: {id}}}: any) => {
       setLoadingStatus('done')
     }
     fetchData()
-  }, [id])
+  }, [get, getEpisode, getCharachter, id])
 
   const { cardProps, paragraphs } = data || {}
 
