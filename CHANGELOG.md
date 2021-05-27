@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Lincerossa/rickandmorty/compare/v1.3.0...v1.3.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* 🐞 the new queryObject updated by the filtersBar has to be cleaned from the empty values in order to avoid empty query string params ([a1addbd](https://github.com/Lincerossa/rickandmorty/commit/a1addbdf5367d5bc948c025548806a3218cc6dd8))
+
 # [1.3.0](https://github.com/Lincerossa/rickandmorty/compare/v1.2.0...v1.3.0) (2021-05-27)
 
 
